@@ -38,8 +38,8 @@ const UsagesTable = (props: any) => {
                             <TableCell>{usage.usage_type.name}</TableCell>
                             <TableCell>{usage.usage_type.unit}</TableCell>
                             <TableCell align="right">{usage.usage_type.factor}</TableCell>
+                            <TableCell align="right">{Math.round(usage.amount / usage.usage_type.factor * 1000) / 1000}</TableCell>
                             <TableCell align="right">{usage.amount}</TableCell>
-                            <TableCell align="right">{usage.total}</TableCell>
                             <TableCell>
                                 <Button variant="outlined" color="error" onClick={() => props.handleDeleteUsage(usage.id)}>Delete</Button>
                             </TableCell>
