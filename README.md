@@ -3,7 +3,7 @@
 
 ## Description
 This project consists in creating some RESTful APIs using Python/Django and in designing a simple Single Page
-Application using Typescript/React that interfaces to the REST services created. \
+Application using Typescript/React that interfaces to the REST services created.
 
 The project was developed using the following setup:
 1. OS: Ubuntu 20.04
