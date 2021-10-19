@@ -1,0 +1,7 @@
+.idea
+venv
+profiles
+logs/*
+local_settings.ini
+__pycache__/
+*.pyc
