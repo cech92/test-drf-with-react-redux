@@ -57,17 +57,17 @@ class UserLoginAPITestCase(APITestCase):
         self.assertTrue("refresh" in json.loads(response.content))
 
 
-# class UsagesTypeModelTestCase(APITestCase):
-# 	def setUp(self):
-# 		self.usage_type = UsageType.objects.get_or_create(id=0, defaults={
-# 			"name": "electricity",
-# 			"unit": "kwh",
-# 			"factor": 10.8
-# 		})
-#
-# 	def test_exists_usage_type(self):
-# 		usage_types_count = UsageType.objects.count()
-# 		self.assertGreater(usage_types_count, 0)
+class UsagesTypeModelTestCase(APITestCase):
+    def setUp(self):
+        self.usage_type = UsageType.objects.get_or_create(id=0, defaults={
+            "name": "electricity",
+            "unit": "kwh",
+            "factor": 10.8
+        })
+
+    def test_exists_usage_type(self):
+        usage_types_count = UsageType.objects.count()
+        self.assertGreater(usage_types_count, 0)
 
 
 class UsagesAPIViewTestCase(APITestCase):

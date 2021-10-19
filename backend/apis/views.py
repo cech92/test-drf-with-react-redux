@@ -1,7 +1,5 @@
 import logging
-from datetime import datetime
 
-from django.utils import timezone
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import status, filters
 from rest_framework.generics import ListCreateAPIView, get_object_or_404, RetrieveUpdateDestroyAPIView, ListAPIView
@@ -84,17 +82,6 @@ class UsageRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):
 	serializer_class = UsageSerializer
 	permission_classes = [IsAuthenticated]
 
-	# def get_object(self):
-	# 	queryset = self.get_queryset()
-	# 	queryset = self.filter_queryset(queryset)
-	# 	filter = {}
-	# 	# for field in self.multiple_lookup_fields:
-	# 	# 	filter[field] = self.kwargs[field]
-	#
-	# 	obj = get_object_or_404(queryset, **filter)
-	# 	self.check_object_permissions(self.request, obj)
-	# 	return obj
-
 	def update(self, request, *args, **kwargs):
 		instance = self.get_object()
 		serializer = UsageCreateUpdateSerializer(instance=instance, data=request.data, partial=True)
@@ -102,7 +89,6 @@ class UsageRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):
 			self.perform_update(serializer)
 			return Response(serializer.data, status=status.HTTP_200_OK)
 		else:
-			print(serializer.errors)
 			logger.error(serializer.errors)
 		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
