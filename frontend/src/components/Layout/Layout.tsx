@@ -69,9 +69,8 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 );
 
 export const Layout = () => {
-  const [pageName, setPageName] = React.useState("Dashboard");
   const [open, setOpen] = React.useState(true);
-  
+
   const toggleDrawer = () => {
     setOpen(!open);
   };
@@ -105,8 +104,8 @@ export const Layout = () => {
               noWrap
               sx={{ flexGrow: 1 }}
             >
-              {window.location.pathname === "/" ? "Dashboard" : window.location.pathname === "/usages" ? "Usages" : 
-              window.location.pathname === "/usages/new" ? "Insert Usage" : ""}
+              {window.location.pathname === "/" ? "Dashboard" : window.location.pathname === "/usages" ? "Usages" :
+                window.location.pathname === "/usages/new" ? "Insert Usage" : ""}
             </Typography>
           </Toolbar>
         </AppBar>
