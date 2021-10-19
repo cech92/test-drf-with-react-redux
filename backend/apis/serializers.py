@@ -39,8 +39,8 @@ class UsageSerializer(DynamicFieldsModelSerializer):
 
 	class Meta:
 		model = Usage
-		fields = ['id', 'usage_at', 'amount', 'usage_type', 'user', 'total']
-		read_only_fields = ['total']
+		fields = ['id', 'usage_at', 'amount', 'usage_type', 'user']
+		# read_only_fields = ['total']
 
 
 class UsageCreateUpdateSerializer(UsageSerializer):

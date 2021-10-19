@@ -2,11 +2,11 @@ import logging
 
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import status, filters
-from rest_framework.generics import ListCreateAPIView, get_object_or_404, RetrieveUpdateDestroyAPIView, ListAPIView
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, ListAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework_simplejwt.views import TokenObtainPairView
-from .utils import DefaultPagination
+from .utils import DefaultPagination, UsageFilter
 
 from apis.models import Usage, UsageType
 from apis.serializers import UsageSerializer, SignInSerializer, UsageCreateUpdateSerializer, UsageTypeSerializer
@@ -44,7 +44,8 @@ class UsageListCreateView(ListCreateAPIView):
 	queryset = Usage.objects.all()
 	serializer_class = UsageSerializer
 	pagination_class = DefaultPagination
-	filterset_fields = ['usage_type', 'user']
+	# filterset_fields = ['usage_type', 'user']
+	filterset_class = UsageFilter
 	ordering_fields = '__all__'
 	ordering = ['usage_at']
 	filter_backends = (filters.OrderingFilter, DjangoFilterBackend)
