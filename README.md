@@ -21,7 +21,7 @@ need to be installed.
 Regarding the front-end I used axios to make the HTTP calls. No templates have 
 been installed.
 
-It takes me around 5 hours and 30 mins to make this project, of these 6 
+It takes me around 6 hours to make this project, of these 6 
 only 2 for the back-end part. I had some challenges with the front-end because
 besides the fact that I am not as experienced as for the back-end part I've 
 always used it with javascript and not with typescript.
