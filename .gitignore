@@ -1,7 +1,7 @@
 .idea
 venv
 profiles
-logs/*
+error.log
 local_settings.ini
 __pycache__
 *.pyc

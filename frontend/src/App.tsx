@@ -12,8 +12,8 @@ export const App = hot(module)(() => (
   <Provider store={store}>
     <Router history={history}>
       <Switch>
-        <Route path="/login" component={Login} />
-        <PrivateRoute isAuthenticated={localStorage.getItem('user') ? true : false} component={Layout} />
+        <Route exact path="/login" component={Login} />
+        <PrivateRoute component={Layout} />
       </Switch>
     </Router>
   </Provider>

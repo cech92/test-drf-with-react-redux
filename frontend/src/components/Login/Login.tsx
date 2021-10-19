@@ -1,17 +1,18 @@
 import React, { FC } from 'react';
+import { AnyAction } from 'redux';
+import { connect } from 'react-redux';
+import { ThunkDispatch } from 'redux-thunk';
+import { useSelector } from "react-redux";
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { signIn } from '../../actions/userActions';
-import { connect } from 'react-redux';
-import { ThunkDispatch } from 'redux-thunk';
-import { AnyAction } from 'redux';
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
 const theme = createTheme();
 
 interface IProps {
@@ -19,15 +20,20 @@ interface IProps {
 }
 
 const Login: FC<IProps> = ({login}) => {
+  var error = useSelector((state: any) => state.user.error);
+  
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
       const data = new FormData(event.currentTarget);
 
       if (data.get("email") && data.get("password")) {
           login(data);
-        console.log("called")
       }
   };
+
+  const setError = (value: any) => {
+    error = value;
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -66,16 +72,16 @@ const Login: FC<IProps> = ({login}) => {
               id="password"
               autoComplete="current-password"
             />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
             <Button
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >Sign In</Button>
+            {error === true ? <Alert onClose={() => setError(false)} severity="error">
+                <AlertTitle>Error</AlertTitle>
+                Wrong credentials — <strong>Please check the credentials</strong>
+            </Alert> : null}
           </Box>
         </Box>
       </Container>
@@ -85,7 +91,7 @@ const Login: FC<IProps> = ({login}) => {
 
 const mapStateToProps = (state: any) => {
   return {
-    user: state.user,
+    user: state.user
   }
 }
 

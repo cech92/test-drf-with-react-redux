@@ -49,7 +49,7 @@ export const signIn = (data: any) => {
             dispatch(signInSuccess(response.data));
             if (response.data && response.data.access) {
                 localStorage.setItem('user', JSON.stringify(response.data));
-                history.push('/');
+                history.push("/");
             }
         } catch (error) {
             dispatch(signInFailure(error));
