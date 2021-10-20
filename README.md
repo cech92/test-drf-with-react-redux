@@ -27,12 +27,18 @@ besides the fact that I am not as experienced as for the back-end part I've
 always used it with javascript and not with typescript.
 
 ## API Description
-1. `/redoc` or `/docs` To access the swagger documentation;
-2. `v1/login` for the authentication with JWT;
-3. `v1/refresh-token` for update the token;
-4. `v1/usage-types` for get the list of usage types sort by name;
-5. `v1/usages` for retrieve the list of usages inserted and post a new usage;
-6. `v1/usages/:id` for update and delete an usage.
+| Methods | Urls             | Actions                              |
+| :------ | :--------------- | :------------------------------------|
+| POST    | /v1/login        | authentication with JWT              |
+| POST    | /v1/refresh-token| refresh the token                    |
+| GET     | /v1/usage-types  | retrieve all the usage types         |
+| GET     | /v1/usages       | retrieve all the usages inserted     |
+| POST    | /v1/usages       | create an new usage                  |
+| GET     | /v1/usages/:id   | retrieve an usage by id              |
+| PUT     | /v1/usages/:id   | update an usage by id                |
+| DELETE  | /v1/usages/:id   | delete an usage by id                |
+
+With `/redoc` or `/docs` is possible to view the swagger documentation.
 
 ## Installation
 ### Using Ubuntu/Debian environment
